@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>REGEXP</title>
+  <style>
+    .error {
+      outline: 1px solid tomato;
+    }
+
+    .correct {
+      outline: 1px solid greenyellow;
+    }
+  </style>
+</head>
+<body>
+<label for="phone">输入电话号码: </label><input type="text" id="phone">
+<br>
+<label for="word">输入相邻重复单词: </label><input type="text" id="word">
+<script>
+  const phoneNode = document.getElementById('phone')
+  const wordNode = document.getElementById('word')
+  phoneNode.addEventListener('input', function () {
+    const value = this.value
+    const reg = /^1[3-578]\d{9}$/
+    phoneNode.className = reg.test(value) ? 'correct' : 'error'
+  })
+  wordNode.addEventListener('input', function () {
+    const value = this.value
+    const reg = /\b([a-zA-Z]+)\b\s+\b\1\b/
+    wordNode.className = reg.test(value) ? 'correct' : 'error'
+  })
+</script>
+</body>
+</html>
